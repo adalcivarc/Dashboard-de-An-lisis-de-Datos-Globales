@@ -139,6 +139,125 @@
             opacity: 0.8;
         }
 
+        /* Botón ChartGo */
+        .chartgo-button {
+            display: block;
+            margin: 30px auto;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(238, 90, 36, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .chartgo-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(238, 90, 36, 0.4);
+            background: linear-gradient(45deg, #ff5252, #d84315);
+        }
+
+        .chartgo-button:active {
+            transform: translateY(-1px);
+        }
+
+        /* Sección ChartGo */
+        .chartgo-section {
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: none;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .chartgo-section.show {
+            display: block;
+        }
+
+        .chartgo-title {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .chartgo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+            gap: 30px;
+        }
+
+        .chartgo-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-top: 4px solid #ff6b6b;
+        }
+
+        .chartgo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .chartgo-card h3 {
+            color: #2c3e50;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .chartgo-card iframe {
+            width: 100% !important;
+            height: 400px !important;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .chart-source {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .chart-source a {
+            color: #ff6b6b;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chart-source a:hover {
+            text-decoration: underline;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .dashboard-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
@@ -329,6 +448,14 @@
             .links-section h3 {
                 font-size: 1.1rem;
             }
+
+            .chartgo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chartgo-card iframe {
+                height: 350px !important;
+            }
         }
 
         @media (max-width: 480px) {
@@ -338,6 +465,10 @@
             
             .meta-item {
                 font-size: 0.8rem;
+            }
+
+            .chartgo-card iframe {
+                height: 300px !important;
             }
         }
 
@@ -383,7 +514,7 @@
 
             <div class="stats">
                 <div class="stat-item">
-                    <span class="stat-number">4</span>
+                    <span class="stat-number">7</span>
                     <span class="stat-label">Visualizaciones</span>
                 </div>
                 <div class="stat-item">
@@ -396,6 +527,44 @@
                 </div>
             </div>
         </header>
+
+        <!-- Botón ChartGo -->
+        <button class="chartgo-button" onclick="toggleChartGo()">
+            📈 ChartGo Analytics
+        </button>
+
+        <!-- Sección ChartGo (oculta inicialmente) -->
+        <div id="chartgo-section" class="chartgo-section">
+            <h2 class="chartgo-title">📊 ChartGo Analytics</h2>
+            <div class="chartgo-grid">
+                <!-- Gráfico 1: Tasa de desempleo en Ecuador -->
+                <div class="chartgo-card">
+                    <h3>🇪🇨 Tasa de Desempleo en Ecuador 2013 - 2023</h3>
+                    <iframe src="https://www.chartgo.com/embed.do?id=bbab9658aa"></iframe>
+                    <div class="chart-source">
+                        <a href="https://www.chartgo.com" target="_blank">Chart maker</a>
+                    </div>
+                </div>
+
+                <!-- Gráfico 2: Usuarios de Internet en Ecuador -->
+                <div class="chartgo-card">
+                    <h3>🌐 Usuarios de Internet en Ecuador (% de la población, 2010–2023)</h3>
+                    <iframe src="https://www.chartgo.com/embed.do?id=6ce350b8aa"></iframe>
+                    <div class="chart-source">
+                        <a href="https://www.chartgo.com" target="_blank">Chart Online</a>
+                    </div>
+                </div>
+
+                <!-- Gráfico 3: Medallas Olímpicas por País -->
+                <div class="chartgo-card">
+                    <h3>🏅 Medallas Olímpicas por País (2000–2024)</h3>
+                    <iframe src="https://www.chartgo.com/embed.do?id=bbab9658aa"></iframe>
+                    <div class="chart-source">
+                        <a href="https://www.chartgo.com" target="_blank">Free chart generator</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="dashboard-grid">
             <!-- Gráfico 1 -->
@@ -531,6 +700,7 @@
                 </div>
                 <div class="footer-links">
                     <a href="https://datawrapper.de" target="_blank">DataWrapper</a>
+                    <a href="https://www.chartgo.com" target="_blank">ChartGo</a>
                     <a href="#" onclick="window.print()">Imprimir</a>
                     <a href="mailto:contacto@dashboard.com">Contacto</a>
                 </div>
@@ -539,6 +709,30 @@
     </div>
 
     <script>
+        // Función para mostrar/ocultar la sección ChartGo
+        function toggleChartGo() {
+            const section = document.getElementById('chartgo-section');
+            const button = document.querySelector('.chartgo-button');
+            
+            if (section.classList.contains('show')) {
+                section.classList.remove('show');
+                button.textContent = '📈 ChartGo Analytics';
+                button.style.background = 'linear-gradient(45deg, #ff6b6b, #ee5a24)';
+            } else {
+                section.classList.add('show');
+                button.textContent = '❌ Ocultar ChartGo';
+                button.style.background = 'linear-gradient(45deg, #28a745, #20c997)';
+                
+                // Scroll suave hacia la sección
+                setTimeout(() => {
+                    section.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start' 
+                    });
+                }, 100);
+            }
+        }
+
         // Actualizar fecha actual
         document.getElementById('fecha').textContent = new Date().toLocaleDateString('es-ES', {
             year: 'numeric',
@@ -572,7 +766,7 @@
         });
 
         // Detectar cuando los iframes están cargados
-        const iframes = document.querySelectorAll('.chart-frame');
+        const iframes = document.querySelectorAll('.chart-frame, .chartgo-card iframe');
         iframes.forEach(iframe => {
             iframe.addEventListener('load', function() {
                 console.log('Gráfico cargado correctamente');
